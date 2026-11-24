@@ -129,7 +129,8 @@ class FrameGenService : Service() {
         // Restore saved settings
         enabled = prefs.getBoolean(PREF_ENABLED, true)
         currentMode = prefs.getInt(PREF_MODE, 1)
-        currentQuality = prefs.getFloat(PREF_QUALITY, 0.5f)
+        currentQuality = (prefs.all[PREF_QUALITY] as? Number)?.toFloat() ?: 0.5f
+        
 
         createNotificationChannels()
     }
